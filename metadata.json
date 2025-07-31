@@ -1,0 +1,6 @@
+{
+  "name": "Binokel Punktezählen",
+  "description": "Diese App unterstützt beim Zählen der Binokelpunkte, sie funktioniert für das Kreuzspiel, also 2 gegen 2.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}

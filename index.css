@@ -1,0 +1,224 @@
+:root {
+  --primary-bg: #0b3d2c;
+  --card-bg: #fdf6e3;
+  --primary-text: #2c1e19;
+  --secondary-text: #6f5f5c;
+  --accent-color: #c0392b;
+  --accent-color-dark: #a03024;
+  --border-color: #dcd0b8;
+  --danger-color: #c0392b;
+  --danger-color-dark: #a03024;
+  --success-color: #27ae60;
+  --modal-overlay-bg: rgba(0, 0, 0, 0.75);
+  --font-family-serif: 'Lora', serif;
+  --font-family-sans: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-serif);
+  background-color: var(--primary-bg);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+                    linear-gradient(225deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+                    linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+                    linear-gradient(315deg, rgba(255, 255, 255, 0.05) 25%, var(--primary-bg) 25%);
+  background-size: 20px 20px;
+  color: var(--primary-text);
+  line-height: 1.6;
+}
+
+#root {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 700;
+  color: var(--primary-text);
+}
+
+h1 {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--card-bg);
+  font-size: 2.5rem;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+h2::before, h2::after {
+    content: " \2756 ";
+    color: var(--accent-color);
+    font-size: 0.8em;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--accent-color);
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+input, select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: var(--font-family-sans);
+  background-color: #fff;
+  color: var(--primary-text);
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.2);
+}
+
+input[type="number"] { -moz-appearance: textfield; }
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+.btn {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: var(--accent-color);
+  color: white;
+  transition: background-color 0.2s, transform 0.1s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+  font-family: var(--font-family-serif);
+}
+
+.btn:hover:not(:disabled) { background-color: var(--accent-color-dark); }
+.btn:active:not(:disabled) { transform: translateY(1px); }
+.btn:disabled { background-color: #9e8a87; cursor: not-allowed; }
+
+.btn-secondary { background-color: var(--secondary-text); }
+.btn-secondary:hover:not(:disabled) { background-color: #4a3f3d; }
+
+.btn-danger { background-color: var(--danger-color); }
+.btn-danger:hover:not(:disabled) { background-color: var(--danger-color-dark); }
+
+.btn-small { padding: 0.5rem 0.75rem; font-size: 1rem; }
+.btn-delete { background: none; border: none; color: var(--danger-color); cursor: pointer; font-weight: bold; font-size: 1rem; }
+
+
+.main-nav { display: flex; gap: 0.5rem; margin-bottom: 2rem; background-color: var(--card-bg); padding: 0.5rem; border-radius: 12px; border: 2px solid var(--accent-color); }
+.main-nav button { flex-grow: 1; background: none; border: none; padding: 0.75rem; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 700; color: var(--primary-text); transition: background-color 0.2s, color 0.2s; font-family: var(--font-family-serif); }
+.main-nav button.active { background-color: var(--accent-color); color: white; }
+.main-nav button:not(.active):hover { background-color: #f3e9d2; }
+
+.add-player-form, .add-player-inline { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+.add-player-form input, .add-player-inline input { flex-grow: 1; }
+
+.table-container { overflow-x: auto; }
+.player-stats-table, .round-history-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+.player-stats-table th, .player-stats-table td, .round-history-table th, .round-history-table td { padding: 0.75rem; text-align: center; border-bottom: 1px solid var(--border-color); }
+.player-stats-table th, .round-history-table th { background-color: #f3e9d2; font-weight: 700; }
+
+.team-selection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem; }
+.team-column h3 { margin-bottom: 1rem; text-align: center; }
+.team-column select { margin-bottom: 0.75rem; }
+
+.scoreboard { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+.team-card { text-align: center; }
+.team-card h3 { font-size: 1.2rem; height: 3.5em; display: flex; align-items: center; justify-content: center; }
+.team-card .score { font-size: 3rem; font-weight: 700; color: var(--accent-color); }
+.progress-bar-container { width: 100%; background-color: var(--border-color); border-radius: 8px; height: 12px; overflow: hidden; margin-top: 1rem; }
+.progress-bar { height: 100%; background-color: var(--success-color); border-radius: 8px; transition: width 0.5s ease-in-out; }
+
+.round-setup { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; margin-bottom: 1.5rem; align-items: end; }
+.player-inputs-table { display: flex; flex-direction: column; gap: 0.5rem; border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; background-color: #fefcf5; }
+.player-inputs-header, .player-inputs-row { display: grid; grid-template-columns: 2fr 1.2fr 1fr; gap: 1rem; align-items: center; }
+.player-inputs-header { font-weight: 700; color: var(--secondary-text); padding-bottom: 0.5rem; border-bottom: 2px solid var(--border-color); }
+.player-inputs-row > div:first-child { font-weight: 500; }
+.player-inputs-row input { padding: 0.5rem; text-align: center; }
+.team-divider { text-align: left; margin: 1rem 0 0.5rem; font-size: 1.1rem; font-weight: 700; color: var(--accent-color); padding-bottom: 0.5rem; border-bottom: 2px solid var(--border-color); }
+.team-divider::before { content:"\2663 "; } /* Club suit */
+
+.round-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; }
+.abandon-game-check { display: flex; align-items: center; gap: 0.5rem; }
+.abandon-game-check label { cursor: pointer; }
+.abandon-game-check input { width: auto; }
+.remaining-points { font-weight: 500; font-family: var(--font-family-sans); }
+.remaining-points.error { color: var(--danger-color); }
+.remaining-points.success { color: var(--success-color); }
+
+/* Review Styles */
+.review-details { margin-bottom: 1.5rem; }
+.review-details-team { margin-bottom: 1rem; }
+.review-details-team h4 { text-align: center; margin-bottom: 0.5rem; color: var(--accent-color); }
+.review-table { width: 100%; border-collapse: collapse; }
+.review-table th, .review-table td { padding: 0.5rem; border: 1px solid var(--border-color); text-align: center; }
+.review-table th { background-color: #f3e9d2; }
+.review-player-points { font-weight: bold; color: var(--accent-color); }
+
+.review-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; text-align: center; }
+.review-team-result h4 { margin-bottom: 0.5rem; color: var(--secondary-text); font-size: 1.1rem; }
+.review-team-result p { font-size: 1.8rem; font-weight: bold; }
+.review-reason { text-align: center; background-color: #f3e9d2; padding: 0.75rem; border-radius: 8px; margin-bottom: 1.5rem; }
+.review-controls { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.round-history-table .danger { color: var(--danger-color); font-weight: bold; }
+.round-history-table td:nth-child(2) { font-size: 0.9rem; color: var(--secondary-text); }
+.round-history-table tr.bid-team1 td:nth-child(4), .round-history-table tr.bid-team2 td:nth-child(6) { font-weight: bold; }
+
+
+.game-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+
+/* Modal Styles */
+.modal-overlay, .winner-modal, .ai-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--modal-overlay-bg); display: flex; justify-content: center; align-items: center; z-index: 1000; padding: 1rem; }
+.modal-content { text-align: center; width: 90%; max-width: 450px; }
+.modal-actions { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
+
+.winner-modal { overflow: hidden; }
+.winner-card { text-align: center; width: 90%; max-width: 450px; position: relative; z-index: 2;}
+.winner-card h2 { font-size: 2.5rem; color: var(--success-color); margin-bottom: 1rem; }
+.winner-card p { font-size: 1.2rem; margin-bottom: 2rem; }
+
+/* Confetti Styles */
+@keyframes confetti-fall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+.confetti-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+.confetti-piece { position: absolute; width: 10px; height: 10px; background-color: #f00; opacity: 0; animation: confetti-fall 5s linear infinite; }
+
+
+@media (max-width: 600px) {
+  #root { margin: 0; padding: 0.5rem; }
+  .scoreboard, .game-controls, .review-summary, .team-selection-grid { grid-template-columns: 1fr; gap: 1rem; }
+  h1 { font-size: 1.8rem; }
+  .round-setup { grid-template-columns: 1fr; gap: 0.5rem; }
+  .player-inputs-header { display: none; }
+  .player-inputs-row { grid-template-columns: 1fr 1fr; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 8px; }
+  .player-inputs-row > div:first-child { grid-column: 1 / -1; margin-bottom: 0.5rem; font-weight: bold; text-align: center; }
+  .round-footer { flex-direction: column; gap: 1rem; align-items: center; }
+  .team-divider { text-align: center; }
+}
